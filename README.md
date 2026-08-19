@@ -1,133 +1,91 @@
-# 📔 Diary App
+# Emotion Diary
 
-감정을 기록하고 돌아볼 수 있는 **React + Vite 기반 다이어리 웹 애플리케이션**입니다.  
-하루의 감정과 생각을 간편하게 작성하고, 월별로 모아보며 나의 일상을 관리할 수 있습니다.
+[English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md)
 
-## 🔗 배포 링크
+A React and Vite web application for recording daily emotions, revisiting entries by month, and editing personal reflections over time.
 
-- https://emotion-project-xi.vercel.app/
+[Open the live app](https://emotion-project-xi.vercel.app/)
 
-## 📌 프로젝트 개요
+![Emotion Diary home](image.png)
 
-Diary App은 일기 작성/조회/수정/삭제(CRUD)를 중심으로 구성된 감정 기록 서비스입니다.
+## Overview
 
-- 날짜, 감정 상태, 일기 내용을 함께 저장
-- 월별 목록 탐색 및 정렬 지원
-- 브라우저 `localStorage` 기반 데이터 유지
+Emotion Diary translates a real user's request for a simple emotional journal into a focused CRUD product. Each entry combines a date, one of five emotional states, and free-form text. Data stays in the browser through `localStorage`, so the app does not require an account or backend.
 
-## ✨ 주요 기능
+## Key features
 
-- **일기 CRUD**
-  - 새 일기 작성
-  - 일기 상세 조회
-  - 기존 일기 수정
-  - 일기 삭제
+- Create a diary entry with date, emotion, and text.
+- Browse monthly entries.
+- Sort entries from newest to oldest or oldest to newest.
+- Open a detailed diary view.
+- Edit or delete an existing entry.
+- Persist entries across refreshes with browser `localStorage`.
+- Handle unknown routes with a dedicated 404 page.
+- Adapt the layout for desktop and mobile screens.
 
-- **감정 선택 UI**
-  - 감정(1~5단계) 선택
-  - 감정 상태를 시각적으로 확인
+## Tech stack
 
-- **월 단위 탐색**
-  - 이전/다음 월 이동
-  - 선택한 월 기준 목록 조회
+- React 18
+- Vite 6
+- React Router DOM 7
+- Context API and `useReducer`
+- Browser `localStorage`
+- CSS
 
-- **정렬 기능**
-  - 최신순 / 오래된순 정렬
+## Project structure
 
-- **로컬 저장소 연동**
-  - 새로고침 이후에도 작성 데이터 유지
-
-## 🛠 기술 스택
-
-- **Frontend**: React 18
-- **Build Tool**: Vite 6
-- **Routing**: React Router DOM 7
-- **State Management**: Context API + `useReducer`
-- **Storage**: Browser `localStorage`
-- **Styling**: CSS
-
-## 📁 프로젝트 구조
-
-```bash
+```text
 src/
- ┣ components/         # 공통 UI 컴포넌트
- ┃ ┣ Editor.jsx        # 일기 작성/수정 폼
- ┃ ┣ DiaryList.jsx     # 일기 목록/정렬
- ┃ ┣ DiaryItem.jsx     # 일기 카드
- ┃ ┣ View.jsx          # 일기 상세 보기
- ┃ ┣ Header.jsx        # 상단 헤더
- ┃ ┣ Button.jsx        # 공용 버튼
- ┃ ┗ EmotionItem.jsx   # 감정 선택 아이템
- ┣ hooks/
- ┃ ┣ useDiary.jsx      # id 기반 일기 조회
- ┃ ┗ usePagetitle.jsx  # 페이지 타이틀 설정
- ┣ pages/
- ┃ ┣ Home.jsx          # 홈(목록/월 이동)
- ┃ ┣ New.jsx           # 새 일기 작성
- ┃ ┣ Edit.jsx          # 일기 수정
- ┃ ┣ Diary.jsx         # 일기 상세
- ┃ ┗ Notfound.jsx      # 404 페이지
- ┣ util/
- ┃ ┣ constants.js      # 감정 상수
- ┃ ┣ get-emtion-images.js
- ┃ ┗ getStringDate.js
- ┣ App.jsx             # 라우팅 + 전역 상태 관리
- ┗ main.jsx            # 앱 진입점
+  components/       Reusable editor, list, card, header, button, and emotion UI
+  hooks/            Diary lookup and document-title hooks
+  pages/            Home, create, edit, detail, and 404 routes
+  util/             Emotion constants, image mapping, and date utilities
+  App.jsx           Routing and global diary state
+  main.jsx          Application entry point
 ```
 
-## 🚀 실행 방법
-
-### 1) 저장소 클론
+## Run locally
 
 ```bash
-git clone <REPOSITORY_URL>
+git clone https://github.com/zxcc9867/Diary_App.git
 cd Diary_App
-```
-
-### 2) 패키지 설치
-
-```bash
 npm install
-```
-
-### 3) 개발 서버 실행
-
-```bash
 npm run dev
 ```
 
-### 4) 브라우저 접속
+Open `http://localhost:5173`.
+
+## Build and preview
 
 ```bash
-http://localhost:5173
-```
-
-## 📦 빌드 및 미리보기
-
-### 프로덕션 빌드
-
-```bash
+npm run lint
 npm run build
-```
-
-### 빌드 결과 미리보기
-
-```bash
 npm run preview
 ```
 
-## 🧭 화면 예시
+## Data and privacy
+
+All diary entries are stored only in the current browser's `localStorage`.
+
+- There is no account system or cloud synchronization.
+- Clearing browser storage removes the entries.
+- Entries do not automatically move between devices or browsers.
+- Do not use the current version for sensitive records on a shared device.
+
+## Screens
 
 ### Home
-<img src="image.png" width="800" alt="Diary App Home 화면" />
+
+<img src="image.png" width="800" alt="Emotion Diary home screen" />
 
 ### Edit
-<img src="image-1.png" width="800" alt="Diary App Edit 화면" />
 
-## 🔮 향후 개선 아이디어
+<img src="image-1.png" width="800" alt="Emotion Diary edit screen" />
 
-- 감정/키워드 검색 기능
-- 월별 감정 통계 시각화
-- 다크 모드
-- 클라우드 동기화 및 계정 연동
-- 모바일 UX 개선
+## Possible next steps
+
+- Emotion and keyword search.
+- Monthly emotion statistics.
+- Dark mode.
+- Optional account-based cloud synchronization.
+- Further mobile UX refinement.
